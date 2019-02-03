@@ -12,10 +12,20 @@ if [ -x /usr/local/bin/brew ]; then
   fi
 fi
 
+# pyenv support
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # rbenv support
 if [ -d $HOME/.rbenv ]; then
 	export PATH="$HOME/.rbenv/bin:$PATH"
 	eval "$(rbenv init -)"
+fi
+
+# qt support
+if [ -d /usr/local/opt/qt/bin ]; then
+        export PATH="/usr/local/opt/qt/bin:$PATH"
 fi
 
 # Case-insensitive globbing (used in pathname expansion)
