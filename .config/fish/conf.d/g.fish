@@ -1,3 +1,1 @@
-function g
-  git $argv
-end
+alias g="git"

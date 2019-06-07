@@ -1,0 +1,1 @@
+set -Ux MANPAGER "less -X"
