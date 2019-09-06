@@ -1,1 +1,0 @@
-alias bu="bundle update"
