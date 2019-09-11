@@ -1,2 +1,1 @@
-# Disable history
-set -g fish_history ""
+set -x fish_histfile ""
