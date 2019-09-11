@@ -1,1 +1,0 @@
-alias bi="bundle install"
