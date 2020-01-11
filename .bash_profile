@@ -12,6 +12,16 @@ if [ -x /usr/local/bin/brew ]; then
   fi
 fi
 
+# cabal support
+if [ -d $HOME/.cabal/bin ]; then
+	export PATH="$HOME/.cabal/bin:$PATH"
+fi
+
+# cargo support
+if [ -d $HOME/.cargo/bin ]; then
+	export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # pyenv support
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -60,3 +70,5 @@ if [ "$OS" != "Linux" ]; then
 		fi
 	fi
 fi
+
+source /Users/marc/Library/Preferences/org.dystroy.broot/launcher/bash/br
