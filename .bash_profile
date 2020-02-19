@@ -23,7 +23,7 @@ if [ -d $HOME/.cargo/bin ]; then
 fi
 
 # jabba support
-[ -s "/Users/tremblaymarc/.jabba/jabba.sh" ] && source "/Users/tremblaymarc/.jabba/jabba.sh"
+[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 # pyenv support
 if command -v pyenv 1>/dev/null 2>&1; then
