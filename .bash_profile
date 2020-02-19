@@ -22,6 +22,9 @@ if [ -d $HOME/.cargo/bin ]; then
 	export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+# jabba support
+[ -s "/Users/tremblaymarc/.jabba/jabba.sh" ] && source "/Users/tremblaymarc/.jabba/jabba.sh"
+
 # pyenv support
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -71,4 +74,3 @@ if [ "$OS" != "Linux" ]; then
 	fi
 fi
 
-source /Users/marc/Library/Preferences/org.dystroy.broot/launcher/bash/br
