@@ -12,6 +12,12 @@ if [ -x /usr/local/bin/brew ]; then
   fi
 fi
 
+# ARM development support
+ARMGCCPATH=$HOME/Documents/gcc-arm-none-eabi-9-2019-q4-major/bin
+if [ -d $ARMGCCPATH ]; then
+	export PATH=$ARMGCCPATH:$PATH
+fi
+
 # cabal support
 if [ -d $HOME/.cabal/bin ]; then
 	export PATH="$HOME/.cabal/bin:$PATH"
@@ -24,6 +30,10 @@ fi
 
 # jabba support
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # pyenv support
 if command -v pyenv 1>/dev/null 2>&1; then
