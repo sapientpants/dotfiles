@@ -1,0 +1,17 @@
+case $1 in
+	start)
+		docker_del_stopped redis
+
+		docker run -d \
+			--name redis \
+			-p 6379:6379 \
+			redis
+		;;
+	stop)
+		docker container stop redis
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

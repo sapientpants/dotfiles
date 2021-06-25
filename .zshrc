@@ -65,14 +65,4 @@ zmodload -a mapfile
 
 # Functions
 fpath=( ~/.zshfn "${fpath[@]}" )
-for f in docker_clean \
-         docker_del_stopped \
-         docker_relies_on \
-         nginx \
-         nginx_config \
-         postgres \
-         psql \
-         redis
-do
-        autoload -Uz $f
-done
+for i in ~/.zshfn/*; do autoload -Uz `basename $i`; done
