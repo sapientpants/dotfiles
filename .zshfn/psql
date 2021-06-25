@@ -1,0 +1,4 @@
+docker run -it \
+  --rm \
+  postgres \
+  psql -h ${postgres_host:-docker.for.mac.localhost} -U ${postgres_user:-postgres} ${postgres_db:-postgres}

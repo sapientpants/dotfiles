@@ -1,0 +1,23 @@
+case $1 in
+	start)
+		docker_del_stopped postgres
+
+		docker volume create pgdata
+
+		docker run -d \
+			--name postgres \
+			-e POSTGRES_PASSWORD=${postgres_password:-postgres} \
+			-e POSTGRES_USER=${postgres_user:-postgres} \
+			-e POSTGRES_DB=${postgres_db:-postgres} \
+			-v pgdata:/var/lib/postgresql/data \
+			-p 5432:5432 \
+			postgres
+		;;
+	stop)
+		docker container stop postgres
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac
