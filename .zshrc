@@ -71,7 +71,8 @@ for f in docker_clean \
          nginx \
          nginx_config \
          postgres \
-         psql
+         psql \
+         redis
 do
         autoload -Uz $f
 done
