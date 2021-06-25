@@ -1,11 +1,25 @@
-# Leave no trace
+# History is best left in the past
+if [ -f $HISTFILE ]; then
+  rm -f $HISTFILE
+fi
 unset HISTFILE
+
+# Clean up less history
+if [ -f $LESSHISTFILE ]; then
+  rm -f $LESSHISTFILE
+fi
+export LESSHISTFILE="-"
 
 # Options
 setopt AUTO_CD
 setopt CORRECT
 setopt CORRECT_ALL
 setopt NO_CASE_GLOB
+
+# Exports
+export EDITOR="vim"
+export MANPAGER="less -X"
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 # Aliases
 alias be="bundle exec"
