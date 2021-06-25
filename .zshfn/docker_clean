@@ -1,6 +1,6 @@
-local containers=${(f)"$(docker ps -aq 2>/dev/null)"}
-docker rm "${containers[*]}" 2>/dev/null
-local volumes=${(f)"$(docker ps --filter status=exited -q 2>/dev/null)"}
-docker rm -v "${volumes[*]}" 2>/dev/null
-local images=${(f)"$(docker images --filter dangling=true -q 2>/dev/null)"}
-docker rmi "${images[*]}" 2>/dev/null
+echo "Containers..."
+docker ps -aq --filter status=exited 2>/dev/null | xargs docker rm
+echo "Volumes..."
+docker volume ls --filter dangling=true -q 2>/dev/null | xargs docker volume rm
+echo "Images..."
+docker images --filter dangling=true -q 2>/dev/null | xargs docker image rm
