@@ -1,0 +1,17 @@
+case $1 in
+	start)
+		docker_del_stopped sonarqube
+
+		docker run -d \
+			--name sonarqube \
+			-p 9000:9000 \
+			sonarqube
+		;;
+	stop)
+		docker container stop sonarqube
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac
