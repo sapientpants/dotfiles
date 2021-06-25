@@ -1,0 +1,18 @@
+case $1 in
+	start)
+		docker_del_stopped nginx
+
+		docker run -d \
+			--name nginx \
+      -v ${HOME}/.nginx/conf.d:/etc/nginx/conf.d:ro \
+			-p 8080:80 \
+			nginx
+		;;
+	stop)
+		docker container stop nginx
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

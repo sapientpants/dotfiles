@@ -68,6 +68,8 @@ fpath=( ~/.zshfn "${fpath[@]}" )
 for f in docker_clean \
          docker_del_stopped \
          docker_relies_on \
+         nginx \
+         nginx_config \
          postgres \
          psql
 do

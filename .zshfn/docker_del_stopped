@@ -1,5 +1,5 @@
 local name=$1
-if [ -z "$name" ]; then
+if [[ -z "$name" ]]; then
   echo "Usage: $0 container"
 	return 1
 fi

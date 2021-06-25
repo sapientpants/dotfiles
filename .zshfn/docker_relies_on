@@ -4,6 +4,6 @@ for container in "$@"; do
 
 	if [[ "$state" == "false" ]] || [[ "$state" == "" ]]; then
 		echo "$container is not running, starting it for you."
-		$container
+		$container start
 	fi
 done
