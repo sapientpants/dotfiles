@@ -15,6 +15,7 @@ setopt AUTO_CD
 setopt CORRECT
 setopt CORRECT_ALL
 setopt NO_CASE_GLOB
+setopt PROMPT_SUBST
 
 # Exports
 export EDITOR="vim"
@@ -60,8 +61,16 @@ if [ -d $HOME/.rbenv ]; then
         eval "$(rbenv init -)"
 fi
 
-# Modules
-zmodload -a mapfile
+# Prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:git*' formats " %b"
+precmd () {
+  vcs_info
+  print -rP "[%1~${vcs_info_msg_0_}]"
+}
+prompt='\$ '
 
 # Functions
 fpath=( ~/.zshfn "${fpath[@]}" )
