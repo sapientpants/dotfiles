@@ -1,0 +1,5 @@
+docker run -it \
+  --name r-base \
+  --rm \
+  -v "$(pwd)":/project \
+  r-base
