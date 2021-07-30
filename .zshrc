@@ -62,15 +62,16 @@ if [ -d $HOME/.rbenv ]; then
 fi
 
 # Prompt
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git*' formats " %b"
-precmd () {
-  vcs_info
-  print -rP "[%1~${vcs_info_msg_0_}]"
-}
-prompt='\$ '
+#autoload -Uz vcs_info
+#zstyle ':vcs_info:*' enable git
+#zstyle ':vcs_info:*' check-for-changes true
+#zstyle ':vcs_info:git*' formats " %s  %r/%S %b (%a) %m%u%c"
+#precmd () {
+#  vcs_info
+#  print -rP "[%n@%m %1~${vcs_info_msg_0_}]"
+#}
+#prompt='%# '
+eval "$(starship init zsh)"
 
 # Functions
 fpath=( ~/.zshfn "${fpath[@]}" )
