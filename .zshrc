@@ -13,7 +13,7 @@ export LESSHISTFILE="-"
 # Options
 setopt AUTO_CD
 setopt CORRECT
-setopt CORRECT_ALL
+#setopt CORRECT_ALL
 setopt NO_CASE_GLOB
 setopt PROMPT_SUBST
 
@@ -37,29 +37,18 @@ fi
 
 # cargo support
 if [ -d $HOME/.cargo/bin ]; then
-        export PATH="$HOME/.cargo/bin:$PATH"
+  export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# jabba support
-[ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+# asdf
+[ -s "/opt/homebrew/opt/asdf/libexec/asdf.sh" ] && . /opt/homebrew/opt/asdf/libexec/asdf.sh
+[ -s "$HOME/.asdf/plugins/java/set-java-home.zsh" ] && . ~/.asdf/plugins/java/set-java-home.zsh
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
-
-# pyenv support
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
-
-# rbenv support
-if [ -d $HOME/.rbenv ]; then
-        export PATH="$HOME/.rbenv/bin:$PATH"
-        eval "$(rbenv init -)"
-fi
+# postgresql support
+export PATH="$PATH:/opt/homebrew/opt/postgresql@15/bin"
 
 # Prompt
 #autoload -Uz vcs_info
