@@ -48,7 +48,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 [ -s "$HOME/.asdf/plugins/java/set-java-home.zsh" ] && . ~/.asdf/plugins/java/set-java-home.zsh
 
 # postgresql support
-export PATH="$PATH:/opt/homebrew/opt/postgresql@15/bin"
+export PATH="$PATH:$(brew --prefix postgresql@15)/bin"
 
 # Prompt
 #autoload -Uz vcs_info
