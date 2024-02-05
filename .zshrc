@@ -21,6 +21,9 @@ setopt PROMPT_SUBST
 export EDITOR="vim"
 export MANPAGER="less -X"
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
+if [ -f $HOME/.exports ]; then
+  source $HOME/.exports
+fi
 
 # Aliases
 alias be="bundle exec"
