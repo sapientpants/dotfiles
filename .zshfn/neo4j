@@ -1,0 +1,21 @@
+case $1 in
+	start)
+		docker_del_stopped neo4j
+
+		docker volume create neo4jdata
+
+		docker run -d \
+			--name neo4j \
+      -p 7474:7474 \
+      -p 7687:7687 \
+			-v neo4jdata:/data \
+			neo4j
+		;;
+	stop)
+		docker container stop neo4j
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac
