@@ -11,7 +11,7 @@ case $1 in
 			-e POSTGRES_DB=${postgres_db:-postgres} \
 			-v pgdata:/var/lib/postgresql/data \
 			-p 5432:5432 \
-			postgres
+			postgres:latest
 		;;
 	stop)
 		docker container stop postgres
