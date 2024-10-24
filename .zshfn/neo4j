@@ -9,7 +9,7 @@ case $1 in
       -p 7474:7474 \
       -p 7687:7687 \
 			-v neo4jdata:/data \
-			neo4j
+			neo4j:latest
 		;;
 	stop)
 		docker container stop neo4j
