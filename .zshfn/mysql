@@ -1,0 +1,20 @@
+case $1 in
+	start)
+		docker_del_stopped mysql
+
+		docker volume create mysqldata
+
+		docker run -d \
+			--name mysql \
+			-e MYSQL_ROOT_PASSWORD=${mysql_password:-mysql} \
+			-v mysqldata:/var/lib/mysql \
+			mysql:latest
+		;;
+	stop)
+		docker container stop mysql
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

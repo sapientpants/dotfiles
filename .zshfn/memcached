@@ -1,0 +1,17 @@
+case $1 in
+	start)
+		docker_del_stopped memcached
+
+		docker run -d \
+			--name memcached \
+			memcached:latest \
+      --memory-limit=64
+		;;
+	stop)
+		docker container stop memcached
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

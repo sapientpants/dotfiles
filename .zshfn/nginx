@@ -6,7 +6,7 @@ case $1 in
 			--name nginx \
       -v ${HOME}/.nginx/conf.d:/etc/nginx/conf.d:ro \
 			-p 8080:80 \
-			nginx
+			nginx:latest
 		;;
 	stop)
 		docker container stop nginx

@@ -1,0 +1,24 @@
+case $1 in
+	start)
+		docker_del_stopped influxdb
+
+		docker run -d \
+			--name influxdb \
+			-p 8086:8086 \
+      -v "$PWD/data:/var/lib/influxdb2" \
+      -v "$PWD/config:/etc/influxdb2" \
+      -e DOCKER_INFLUXDB_INIT_MODE=setup \
+      -e DOCKER_INFLUXDB_INIT_USERNAME=influxdb \
+      -e DOCKER_INFLUXDB_INIT_PASSWORD=influxdb \
+      -e DOCKER_INFLUXDB_INIT_ORG=docker \
+      -e DOCKER_INFLUXDB_INIT_BUCKET=docker \
+			influxdb:2
+		;;
+	stop)
+		docker container stop influxdb
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac
