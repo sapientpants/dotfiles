@@ -4,12 +4,14 @@ case $1 in
 
 		docker volume create neo4jdata
 
+		# See https://community.neo4j.com/t/latest-docker-image-only-shows-jvm-crash-on-mac-m4/72553
 		docker run -d \
 			--name neo4j \
-      -p 7474:7474 \
-      -p 7687:7687 \
+      --env NEO4J_PLUGINS='["apoc", "graph-data-science"]' \
+			-p 7474:7474 \
+			-p 7687:7687 \
 			-v neo4jdata:/data \
-			neo4j:latest
+			neo4j:5.24.1
 		;;
 	stop)
 		docker container stop neo4j

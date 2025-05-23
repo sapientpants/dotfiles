@@ -1,0 +1,17 @@
+case $1 in
+	start)
+		docker_del_stopped prometheus
+
+		docker run -d \
+			--name prometheus \
+			-p 9090:9090 \
+			bitnami/prometheus:latest
+		;;
+	stop)
+		docker container stop prometheus
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac
