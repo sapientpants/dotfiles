@@ -83,4 +83,23 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
+
+zellij-completion() {
+    if [[ "${SHELL}" == "zsh" ]]; then
+        . <( zellij setup --generate-completion zsh | sed -Ee 's/^(_(zellij) ).*/compdef \1\2/' )
+    else
+        . <( zellij setup --generate-completion "$BASE_SHELL" )
+    fi
+}
+zellij-completion
+
+#if [[ -z "$ZELLIJ_SESSION_NAME" ]]; then
+#    #zellij attach -c $USER@$(hostname)
+#    zellij --session $(uuidgen)
+#fi
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/marc/.lmstudio/bin"
+# End of LM Studio CLI section
+

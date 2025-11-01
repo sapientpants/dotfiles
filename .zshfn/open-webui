@@ -1,0 +1,22 @@
+case $1 in
+	start)
+		docker_del_stopped open-webui
+
+    docker run -d \
+      --name open-webui \
+      -p 3000:8080 \
+      -e OLLAMA_BASE_URL="http://host.docker.internal:10000/v1" \
+      --add-host=host.docker.internal:host-gateway \
+      -v open-webui:/app/backend/data \
+      --name open-webui \
+      --restart always \
+      ghcr.io/open-webui/open-webui:main
+		;;
+	stop)
+		docker container stop open-webui
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac
