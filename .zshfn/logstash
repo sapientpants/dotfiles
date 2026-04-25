@@ -1,0 +1,16 @@
+case $1 in
+	start)
+		docker_del_stopped logstash
+
+		docker run -d \
+			--name logstash \
+			logstash:8.15.3
+		;;
+	stop)
+		docker container stop logstash
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

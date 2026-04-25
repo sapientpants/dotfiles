@@ -18,7 +18,7 @@ setopt NO_CASE_GLOB
 setopt PROMPT_SUBST
 
 # Exports
-export EDITOR="vim"
+export EDITOR="nvim"
 export MANPAGER="less -X"
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 if [ -f $HOME/.exports ]; then
@@ -30,8 +30,13 @@ alias be="bundle exec"
 alias bi="bundle install"
 alias bu="bundle update"
 alias g="git"
-alias ll="ls -al"
 alias p="cd ~/Projects"
+alias ls='eza -lh --group-directories-first --icons --hyperlink'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
+alias vi='nvim'
+alias vim='nvim'
 
 # cabal support
 if [ -d $HOME/.cabal/bin ]; then
@@ -46,9 +51,8 @@ fi
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# asdf
-. $(brew --prefix asdf)/libexec/asdf.sh
-[ -s "$HOME/.asdf/plugins/java/set-java-home.zsh" ] && . ~/.asdf/plugins/java/set-java-home.zsh
+# mise
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 
 # postgresql support
 export PATH="$PATH:$(brew --prefix postgresql@15)/bin"
@@ -68,3 +72,8 @@ eval "$(starship init zsh)"
 # Functions
 fpath=( ~/.zshfn "${fpath[@]}" )
 for i in ~/.zshfn/*; do autoload -Uz `basename $i`; done
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/marc/.lmstudio/bin"
+# End of LM Studio CLI section
+

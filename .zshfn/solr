@@ -1,0 +1,17 @@
+case $1 in
+	start)
+		docker_del_stopped solr
+
+		docker run -d \
+			--name solr \
+			-p 8983:8983 \
+			solr:latest
+		;;
+	stop)
+		docker container stop solr
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

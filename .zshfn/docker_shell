@@ -1,0 +1,5 @@
+docker run --rm \
+	--name docker_shell \
+	-v "$(pwd)":/work \
+	-w /work \
+	-it ubuntu:latest /bin/bash

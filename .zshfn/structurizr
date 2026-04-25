@@ -1,0 +1,20 @@
+case $1 in
+	start)
+		docker_del_stopped structurizr
+
+    mkdir -p docs/structurizr
+		docker run -d \
+      --rm \
+			--name structurizr \
+      -p 8080:8080 \
+      -v ./docs/structurizr:/usr/local/structurizr \
+			structurizr/lite:latest
+		;;
+	stop)
+		docker container stop structurizr
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

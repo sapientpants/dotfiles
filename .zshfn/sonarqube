@@ -4,8 +4,8 @@ case $1 in
 
 		docker run -d \
 			--name sonarqube \
-			-p 9000:9000 \
-			sonarqube
+      -p 9000:9000 \
+			sonarqube:latest
 		;;
 	stop)
 		docker container stop sonarqube

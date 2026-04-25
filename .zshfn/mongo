@@ -1,0 +1,16 @@
+case $1 in
+	start)
+		docker_del_stopped mongo
+
+		docker run -d \
+			--name mongo \
+			mongo:latest 
+		;;
+	stop)
+		docker container stop mongo
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

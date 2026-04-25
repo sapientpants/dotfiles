@@ -1,0 +1,17 @@
+case $1 in
+	start)
+		docker_del_stopped kibana
+
+		docker run -d \
+			--name kibana \
+			-p 5601:5601 \
+			kibana:8.15.3
+		;;
+	stop)
+		docker container stop kibana
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

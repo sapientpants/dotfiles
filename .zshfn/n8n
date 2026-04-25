@@ -1,0 +1,21 @@
+case $1 in
+	start)
+		docker_del_stopped n8n
+
+		docker volume create n8n_data
+
+		docker run -d \
+			--name n8n \
+      -e N8N_SECURE_COOKIE=false \
+			-v n8n_data:/home/node/.n8n \
+			-p 5678:5678 \
+			docker.n8n.io/n8nio/n8n
+		;;
+	stop)
+		docker container stop n8n
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac

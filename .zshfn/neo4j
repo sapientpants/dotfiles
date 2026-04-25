@@ -1,0 +1,23 @@
+case $1 in
+	start)
+		docker_del_stopped neo4j
+
+		docker volume create neo4jdata
+
+		# See https://community.neo4j.com/t/latest-docker-image-only-shows-jvm-crash-on-mac-m4/72553
+		docker run -d \
+			--name neo4j \
+      --env NEO4J_PLUGINS='["apoc", "graph-data-science"]' \
+			-p 7474:7474 \
+			-p 7687:7687 \
+			-v neo4jdata:/data \
+			neo4j:latest
+		;;
+	stop)
+		docker container stop neo4j
+		;;
+	*)
+		echo "Usage: $0 {start|stop}"
+		return 1
+		;;
+esac
