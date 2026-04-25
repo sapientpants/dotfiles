@@ -9,9 +9,9 @@ case $1 in
 			-e POSTGRES_PASSWORD=${postgres_password:-postgres} \
 			-e POSTGRES_USER=${postgres_user:-postgres} \
 			-e POSTGRES_DB=${postgres_db:-postgres} \
-			-v pgdata:/var/lib/postgresql/data \
+			-v pgdata:/var/lib/postgresql \
 			-p 5432:5432 \
-			postgres:latest
+			pgvector/pgvector:pg18
 		;;
 	stop)
 		docker container stop postgres
